@@ -68,7 +68,10 @@ public class MyAction extends AnAction {
             @Override
             public void onTestFinished(@NotNull SMTestProxy test) {
                 if (!test.isLeaf()) return; // skip suite-level events, only individual tests
-                if (test.isPassed()) play(successClip);
+                if (test.isPassed()) {
+                    play(successClip);
+                    ConfettiPanel.showOn(project);
+                }
                 else if (test.isIgnored()) play(errorClip);
                 else play(errorClip);
             }
