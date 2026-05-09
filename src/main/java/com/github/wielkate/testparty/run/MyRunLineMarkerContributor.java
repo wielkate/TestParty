@@ -9,7 +9,6 @@ public final class MyRunLineMarkerContributor extends RunLineMarkerContributor {
 
     @Override
     public @NotNull Info getInfo(@NotNull PsiElement element) {
-//        AnAction action = ExecutorAction.getActionList().get(0);
         AnAction action = new MyAction(element.getText());
         AnAction[] actions = new AnAction[]{action};
         return new Info(null, actions, psi -> "Run Test with Effects");
