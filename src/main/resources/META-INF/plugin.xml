@@ -14,8 +14,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <runLineMarkerContributor
-                language=""
-                implementationClass="com.github.wielkate.testparty.run.EffectsRunLineMarkerContributor"/>
+                id="scenarioRunLineMarkerContributor"
+                language="JAVA"
+                implementationClass="com.github.wielkate.testparty.run.MyRunLineMarkerContributor"/>
+
+
         <configurationType implementation="com.github.wielkate.testparty.example.DemoRunConfigurationType"/>
         <toolWindow factoryClass="com.github.wielkate.testparty.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.wielkate.testparty.startup.MyProjectActivity" />
