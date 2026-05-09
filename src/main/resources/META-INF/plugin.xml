@@ -23,4 +23,14 @@
         <toolWindow factoryClass="com.github.wielkate.testparty.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.wielkate.testparty.startup.MyProjectActivity" />
     </extensions>
+    <actions>
+        <action id="com.github.wielkate.testparty.run.MyAction"
+                class="com.github.wielkate.testparty.run.MyAction"
+                text="Run '$Name$' with Effects"
+                description="Run the current configuration with extra effects">
+            <add-to-group group-id="RunContextGroup"
+                          anchor="after"
+                          relative-to-action="DebugClass"/>
+        </action>
+    </actions>
 </idea-plugin>
