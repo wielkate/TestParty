@@ -2,8 +2,7 @@ package com.github.wielkate.testparty.run;
 
 import com.intellij.execution.ExecutionManager;
 import com.intellij.execution.Executor;
-import com.intellij.execution.RunManager;
-import com.intellij.execution.RunnerAndConfigurationSettings;
+import com.intellij.execution.actions.ConfigurationContext;
 import com.intellij.execution.executors.DefaultRunExecutor;
 import com.intellij.execution.runners.ExecutionEnvironmentBuilder;
 import com.intellij.icons.AllIcons;
@@ -30,8 +29,8 @@ public class MyAction extends AnAction {
         Project project = e.getProject();
         if (project == null) return;
 
-        RunManager runManager = RunManager.getInstance(project);
-        RunnerAndConfigurationSettings selected = runManager.getSelectedConfiguration();
+        final var context = ConfigurationContext.getFromContext(e.getDataContext(), e.getPlace());
+        final var selected = context.getConfiguration();
 
         if (selected == null) {
             System.out.println("No run configuration selected.");
@@ -50,10 +49,12 @@ public class MyAction extends AnAction {
 
     @Override
     public void update(@NotNull AnActionEvent e) {
-        Project project = e.getProject();
-        boolean hasConfig = project != null &&
-                RunManager.getInstance(project).getSelectedConfiguration() != null;
-        e.getPresentation().setEnabledAndVisible(hasConfig);
+        final var project = e.getProject();
+        if (project == null) {
+            e.getPresentation().setEnabledAndVisible(false);
+            return;
+        }
+        ConfigurationContext context = ConfigurationContext.getFromContext(e.getDataContext(), e.getPlace());
+        e.getPresentation().setEnabledAndVisible(context.getConfiguration() != null);
     }
-
 }
