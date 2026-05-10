@@ -72,12 +72,13 @@ public class MyAction extends AnAction {
                     ConfettiPanel.showOn(project);
                     play(successClip);
                 } else if (test.isIgnored()) {
+                    BlinkPanel.showOn(project);
                     play(ignoreClip);
                 } else {
                     SmokePanel.showOn(project);
                     play(errorClip);
                 }
-                sleep(5000);
+                sleep(3000);
             }
         });
     }

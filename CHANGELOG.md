@@ -8,3 +8,5 @@
 - Added `MyRunLineMarkerContributor` to add the custom run action from the gutter.
 - Added `MyAction` to trigger test execution and subscribe to test status events.
 - Added `ConfettiPanel` and `ConfettiItem` to render and animate confetti
+- Added `SmokePanel` to render and animate smoke on test failure.
+- Added `BlinkPanel` to render and animate a blinking effect on ignored test.

@@ -6,7 +6,7 @@ TestParty is an IntelliJ IDEA plugin experiment that makes running tests more fu
 
 - Adds a custom **Run Test with Effects** action.
 - Plays result sounds for test outcomes (supports isPass, isFail, isIgnored).
-- Shows a confetti animation on successful test completion and smoke in failure.
+- Shows a confetti animation on successful test completion, smoke in failure, blinking on ignored test.
 - Integrates with test run events from the IntelliJ test runner.
 
 ## Demo
