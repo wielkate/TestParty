@@ -35,7 +35,7 @@ public class ConfettiItem {
         x += speedX;
         y += speedY;
         rotation += rotationSpeed;
-        if (y > panelHeight - 60) {
+        if (y > panelHeight / 2.0) {
             opacity -= 0.03f; // fade out near bottom
         }
     }

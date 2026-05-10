@@ -35,7 +35,7 @@ public class ConfettiPanel extends JPanel {
     }
 
     private void start(JLayeredPane parent) {
-        timer = new Timer(8, e -> {
+        timer = new Timer(0, e -> {
 
             items.removeIf(ConfettiItem::isDead);
             items.forEach(i -> i.update(getHeight()));

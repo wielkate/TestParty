@@ -69,11 +69,15 @@ public class MyAction extends AnAction {
             public void onTestFinished(@NotNull SMTestProxy test) {
                 if (!test.isLeaf()) return; // skip suite-level events, only individual tests
                 if (test.isPassed()) {
-                    play(successClip);
                     ConfettiPanel.showOn(project);
+                    play(successClip);
+                } else if (test.isIgnored()) {
+                    play(ignoreClip);
+                } else {
+                    SmokePanel.showOn(project);
+                    play(errorClip);
                 }
-                else if (test.isIgnored()) play(errorClip);
-                else play(errorClip);
+                sleep(5000);
             }
         });
     }
@@ -114,5 +118,13 @@ public class MyAction extends AnAction {
         }
         ConfigurationContext context = ConfigurationContext.getFromContext(e.getDataContext(), e.getPlace());
         e.getPresentation().setEnabledAndVisible(context.getConfiguration() != null);
+    }
+
+    private void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
